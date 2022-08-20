@@ -14,6 +14,7 @@ export const authOptions: NextAuthOptions = {
         return true;
       } else {
         return false;
+        // return '/unauthorized'
       }
     },
     session({ session, user }) {
