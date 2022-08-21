@@ -1,5 +1,5 @@
 import NextAuth, { type NextAuthOptions } from "next-auth";
-import GoogleProvider from "next-auth/providers/discord";
+import GoogleProvider from "next-auth/providers/google";
 
 // Prisma adapter for NextAuth, optional and can be removed
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
@@ -10,12 +10,7 @@ export const authOptions: NextAuthOptions = {
   // Include user.id on session
   callbacks: {
     signIn({ user }) {
-      if (user.email?.endsWith("@bu.edu")) {
-        return true;
-      } else {
-        return false;
-        // return '/unauthorized'
-      }
+      return user.email?.endsWith("@bu.edu") ? true : false;
     },
     session({ session, user }) {
       if (session.user) {
@@ -31,7 +26,6 @@ export const authOptions: NextAuthOptions = {
       clientId: env.GOOGLE_CLIENT_ID,
       clientSecret: env.GOOGLE_CLIENT_SECRET,
     }),
-    // ...add more providers here
   ],
   secret: env.NEXTAUTH_SECRET,
 };
