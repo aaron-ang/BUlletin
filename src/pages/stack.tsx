@@ -10,10 +10,10 @@ const Stack = () => {
   const hello = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
   return (
     <main className="container mx-auto flex flex-col items-center justify-center p-4">
-      <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">
+      <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700 dark:text-gray-200">
         Create <span className="text-purple-300">T3</span> App
       </h1>
-      <p className="text-2xl text-gray-700">This stack uses:</p>
+      <p className="text-2xl text-gray-700 dark:text-gray-200">This stack uses:</p>
       <div className="grid gap-3 pt-3 mt-3 text-center md:grid-cols-2 lg:w-2/3">
           <TechnologyCard
             name="NextJS"
@@ -49,9 +49,9 @@ const TechnologyCard = ({
   documentation,
 }: TechnologyCardProps) => {
   return (
-    <section className="flex flex-col justify-center p-6 duration-500 border-2 border-gray-500 rounded shadow-xl motion-safe:hover:scale-105">
-      <h2 className="text-lg text-gray-700">{name}</h2>
-      <p className="text-sm text-gray-600">{description}</p>
+    <section className="flex flex-col justify-center p-6 duration-500 border-2 border-gray-500 rounded shadow-xl motion-safe:hover:scale-105 dark:border-gray-300">
+      <h2 className="text-lg text-gray-700 dark:text-gray-200">{name}</h2>
+      <p className="text-sm text-gray-600 dark:text-gray-400">{description}</p>
       <a
         className="mt-3 text-sm underline text-violet-500 decoration-dotted underline-offset-2"
         href={documentation}
