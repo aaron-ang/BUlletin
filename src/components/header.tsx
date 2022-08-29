@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { MouseEvent, useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 
-const Header = () => {
+export default function Header() {
   const { data: session } = useSession();
   const user = session?.user;
   const router = useRouter();
@@ -103,6 +103,4 @@ const Header = () => {
       </div>
     </nav>
   );
-};
-
-export default Header;
+}

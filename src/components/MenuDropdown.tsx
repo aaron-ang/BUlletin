@@ -5,7 +5,7 @@ import { signOut } from "next-auth/react";
 import Image from "next/image";
 
 // Menu Dropdown when user is logged in
-const MenuDropdown = ({ user }: any) => {
+export default function MenuDropdown({ user }: any) {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <Menu.Button className="inline-flex w-full justify-center rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
@@ -49,6 +49,4 @@ const MenuDropdown = ({ user }: any) => {
       </Transition>
     </Menu>
   );
-};
-
-export default MenuDropdown;
+}
