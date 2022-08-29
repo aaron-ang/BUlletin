@@ -5,15 +5,6 @@ import { useQueryClient } from "react-query";
 import { useState } from "react";
 
 const Dashboard = () => {
-  const queryClient = useQueryClient();
-  const { isLoading: isCourseLoading, data: userData } = trpc.useQuery([
-    "user.getUser",
-  ]);
-  const mutation = trpc.useMutation(["user.updateUserCourse"], {
-    onSuccess: () => {
-      queryClient.invalidateQueries(["user.getUser"]);
-    },
-  });
   const router = useRouter();
   const { data: session, status } = useSession({
     required: true,
@@ -21,6 +12,17 @@ const Dashboard = () => {
       router.push("/");
     },
   });
+
+  const { isLoading: isCourseLoading, data: userData } = trpc.useQuery([
+    "user.getUser",
+  ]);
+  const queryClient = useQueryClient();
+  const mutation = trpc.useMutation(["user.updateUserCourse"], {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["user.getUser"]);
+    },
+  });
+
   const [editing, setEditing] = useState(false);
   const [courseInput, setCourseInput] = useState("");
 
@@ -44,10 +46,10 @@ const Dashboard = () => {
 
   const updateCourse = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setEditing(false);
     const payload = formatInput(courseInput);
     if (payload) {
-    mutation.mutate(payload);
+      setEditing(false);
+      mutation.mutate(payload);
     } else {
       setCourseInput("");
       alert("Invalid course input. Please try again.");
