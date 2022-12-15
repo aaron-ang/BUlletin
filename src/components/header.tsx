@@ -95,7 +95,7 @@ export default function Header() {
               </button>
             ) : (
               <button
-                onClick={() => signIn(undefined, { callbackUrl: "/dashboard" })} // Log in
+                onClick={() => signIn("google", { callbackUrl: "/dashboard" })} // Log in
                 className="inline-block text-m px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-primary hover:bg-white mt-4 lg:mt-0"
               >
                 Log in
